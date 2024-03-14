@@ -105,12 +105,6 @@ router.route('/movies')
         movieNew.genre = req.body.genre;
         movieNew.actorName = req.body.actorName;
         movieNew.characterName = req.body.characterNameName;
-
-        Movie.findOne({title: movieNew.title}).select('title releaseDate genre actorName characterName').exec(function(err, movie) {
-            if (err) {
-                res.send(err);
-            }
-        })
     })
 
     .delete((req, res) => {
