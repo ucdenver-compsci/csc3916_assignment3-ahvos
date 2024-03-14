@@ -88,9 +88,9 @@ router.post('/signin', function (req, res) {
 
 router.route('/movies')
     .get((req, res) => {
-        const movies = await Movie.find();
+        const movies = Movie.find();
         res.json(movies);
-        
+
         if(res.status(500)) {
             res.send(err);
         }
