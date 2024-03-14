@@ -86,9 +86,14 @@ router.post('/signin', function (req, res) {
     })
 });
 
-router.route('/movie')
+router.route('/movies')
     .get((req, res) => {
+        const movies = await Movie.find();
         res.json(movies);
+        
+        if(res.status(500)) {
+            res.send(err);
+        }
     }
     )
 
