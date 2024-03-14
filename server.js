@@ -88,12 +88,13 @@ router.post('/signin', function (req, res) {
 
 router.route('/movies')
     .get((req, res) => {
-        const movies = Movie.find();
-        res.json(movies);
-
-        if(res.status(500)) {
-            res.send(err);
+        console.log(req.body);
+        res = res.status(200);
+        if (req.get('Content-Type')) {
+            res = res.type(req.get('Content-Type'));
         }
+        var o = getJSONObjectForMovieRequirement(req);
+        res.json(o);
     }
     )
 
